@@ -6,8 +6,10 @@ while (Ciclo):
     except ValueError:
         print("Debe ser un número entero")
         continue
-        
-    if (edad < 12):
+    if (edad < 0):
+        print("Digite la edad valida")  
+        Ciclo2 = False  
+    elif (edad < 12):
         print("Eres un niño")
     elif(edad < 18):
         print("Eres un adolecente")
@@ -15,8 +17,8 @@ while (Ciclo):
         print("Eres un adulto")
     elif(edad >= 60):
         print("Eres un adulto mayor")
-    print("¿Desea ingresar otra edad? ")
     while (Ciclo2):
+        print("¿Desea ingresar otra edad? ")
         try:   
             option = int(input("(Digite el número de la opcion)\n1.si\n2.no\n"))
             if (option == 1): 
