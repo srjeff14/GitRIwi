@@ -59,45 +59,51 @@ while(True):
     elif (option == 3):
         notas = []
         cont = 0
+        breCicle = 0
         while(True):
             try:
-                while(True):
-                        cant = int(input("Digite la cantidad de notas: "))
-                        if(cant > 0):
-                            breCicle = 0
-                            if (cant >= 1):
-                                for i in range(1,cant+1):
-                                    while(True):
-                                        try:
-                                            nota = int(input(f"Digite la nota número {i}: "))
-                                            breCicle += 1
-                                            if (nota >= 0 and nota <= 100):
-                                                notas.insert(i,nota)
-                                                if (nota >= 60 and nota < 101):
-                                                    cont += 1
-                                                    break
-                                                elif(nota < 0):
-                                                    print("Digite un valor valido")
-                                                break
-                                            elif(breCicle == cant):
-                                                break
-                                            else: 
-                                                print("DIgite un valor valido")
-                                        except ValueError:
-                                            print("Digite un valor correcto")
-                                            continue
+                valor = int(input("Digite el valor especifico: "))
+                if(valor > 0):
+                    while(True):
+                        try:
+                            cant = int(input("Digite la cantidad de notas: "))
+                            if(cant > 0):
+                                if (cant >= 1):
+                                        while(breCicle < cant):
+                                            try:
+                                                nota = int(input(f"Digite la nota número {breCicle+1}: "))
+                                                if (nota > 0 and nota <= 100):
+                                                    notas.insert(breCicle,nota)
+                                                    breCicle += 1
+                                                    if (nota > valor):
+                                                        cont += 1
+                                                        break
+                                                    elif(nota < 0):
+                                                        print("Digite un valor valido")
+                                                else: 
+                                                    print("DIgite un valor valido")                                           
+                                            except ValueError:
+                                                print("Digite un valor correcto")
+                                                continue
+                                else:
+                                    print("Digite un valor valido")
                             else:
                                 print("Digite un valor valido")
-                            break
-                        else:
+                        except ValueError:
                             print("Digite un valor valido")
+                            continue
+                        if (breCicle == cant):
+                            break
+                    print(f"La cantidad de notas aprobadas fueron: {cont}")
+                    comas = ", ".join(map(str, notas))
+                    print(f"Las notas fueron: {comas}")
+                    break
+                else:
+                    print("Digite un valor valido")
             except ValueError:
                 print("Digite un valor valido")
                 continue
-            break
-        print(f"La cantidad de notas aprobadas fueron: {cont}")
-        comas = ", ".join(map(str, notas))
-        print(f"Las notas fueron: {comas}")
+        
         
     elif (option == 4):
         notas = []
