@@ -35,7 +35,12 @@ while(True):
                     for i in range(1,cant+1):
                         while(True):
                             try:
-                                nota = int(input(f"Digite la nota número {i}: "))
+                                while(True):
+                                    nota = int(input(f"Digite la nota número {i}: "))                                
+                                    if (nota < 0):
+                                        print("Digite un valor valido")
+                                    else:
+                                        break
                                 notas.insert(i,nota)
                                 acum += nota 
                             except ValueError:
@@ -58,31 +63,34 @@ while(True):
             try:
                 while(True):
                         cant = int(input("Digite la cantidad de notas: "))
-                        breCicle = 0
-                        if (cant >= 1):
-                            for i in range(1,cant+1):
-                                while(True):
-                                    try:
-                                        nota = int(input(f"Digite la nota número {i}: "))
-                                        breCicle += 1
-                                        if (nota >= 0 and nota <= 100):
-                                            notas.insert(i,nota)
-                                            if (nota >= 60 and nota < 101):
-                                                cont += 1
+                        if(cant > 0):
+                            breCicle = 0
+                            if (cant >= 1):
+                                for i in range(1,cant+1):
+                                    while(True):
+                                        try:
+                                            nota = int(input(f"Digite la nota número {i}: "))
+                                            breCicle += 1
+                                            if (nota >= 0 and nota <= 100):
+                                                notas.insert(i,nota)
+                                                if (nota >= 60 and nota < 101):
+                                                    cont += 1
+                                                    break
+                                                elif(nota < 0):
+                                                    print("Digite un valor valido")
                                                 break
-                                            elif(nota < 0):
-                                                print("Digite un valor valido")
-                                            break
-                                        elif(breCicle == cant):
-                                            break
-                                        else: 
-                                            print("DIgite un valor valido")
-                                    except ValueError:
-                                        print("Digite un valor correcto")
-                                        continue
+                                            elif(breCicle == cant):
+                                                break
+                                            else: 
+                                                print("DIgite un valor valido")
+                                        except ValueError:
+                                            print("Digite un valor correcto")
+                                            continue
+                            else:
+                                print("Digite un valor valido")
+                            break
                         else:
                             print("Digite un valor valido")
-                        break
             except ValueError:
                 print("Digite un valor valido")
                 continue
